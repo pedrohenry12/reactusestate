@@ -3,15 +3,16 @@ import styles from "./Contador.module.css"
 
 export default function Contador() {
   
+  const [stap, setStap] = useState(1)
   const [contador, setcontador] = useState(0)
 
   function incrementar(){
-    setcontador(contador +1)
+    setcontador(contador + stap)
     
   }
 
   function decrementar(){
-    setcontador(contador -1)
+    setcontador(contador - stap)
     
   }
 
@@ -21,6 +22,11 @@ export default function Contador() {
   return(
     <div className={styles.container}>
     <h1 className={styles.titulo}>Contador</h1>
+    <input id="stap"
+           type="number"
+           onChange={(e) => setStap(parseInt(e.target.value) || 1)}
+           placeholder="Escolha um stap para o contador"
+           />
       <div className={styles.contadorDisplay}>
         {contador}
       </div>
